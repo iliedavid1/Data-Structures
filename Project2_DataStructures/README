@@ -1,0 +1,24 @@
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Copyright 2021 Ilie David 314CA
+
+Pentru dictionarele stocate de servere am folosit scheletul din laborator, la
+fel cum am facut cu lista circulara folosita pentru hashring.
+
+Pe hashring retin hash-urile si id-urile serverelor si le ordonez crescator
+in functie de hash-ul lor.
+Pe langa hashring, in structura de loadbalancer am si un vector in care retin
+pointerii la servere.
+
+Atunci cand adaug elemente in servere, verific daca serverul adaugat in
+hashrinig e pe prima pozitie, in cazul in care verific daca elementele care
+ar trebui redistribuite au hash-ul mai mic decat serverul adaugat sau daca
+hash-ul lor este mai mare decat hash-ul ultimului server din hashring.
+Cand se adauga un server oriunde in hashring, in afara de prima pozitie,
+redistribui elementele din serverul cu o pozitie mai mare decat cea a celui
+pe care il adaug si verific daca hash-ul elementelor este mai mic decat a
+celui adugat si mai mare decat a serverului precedent(asta pentru ca
+elementul din dictionar poate sa fie in alta parte in hashring din cauza
+replicilor).
+
+Cand dau remove la un server, mai intai il scot din hashring, dupa care
+apelez functia de stocare a elementelor in loadbalancer.
