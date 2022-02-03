@@ -1,0 +1,15 @@
+Copyright 2021 Ilie David 314CA
+
+Pentru lista circulara dublu inlantuita am folosit scheletul de la laborator. 
+
+Pentru a stoca fiecare planeta intr-o lista circulara dublu inlantuita am facut
+o structura (planet) care stocheaza numarul de kill-uri, numele si scuturile
+planetelor si am introdus-o in variabila data din fiecare nod.
+
+Am citit fiecare comanda cu scanf si am verificat cu strcmp fiecare comanda.
+
+La implementarea functiilor din problema, am folosit functiile de add, get si
+remove facute la laboratorul de cdll.
+
+Pentru a accesa fiecare planeta din noduri, am folosit cast la (struct planet*)
+pentru variabila de tip void* (data) din noduri.
