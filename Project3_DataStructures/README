@@ -1,0 +1,28 @@
+//Copyright Ilie David, Cosor Mihai 2021
+
+Pentru a rezolva tema, am urmarit instructiunile de pe ocw si codul testelor
+acestei teme. Am implementat functiile in ordine, folosindu-ne de cele
+anterioare pentru rezolvarea celor ce urmau (spre exemplu, in functia search
+apleam functia indexRope pentru intervalul dat, iar in insert si in delete
+folosim split si concat).
+
+Am implementat functii aditionale:
+-pentru copierea unui copac(clone_rope_tree);
+-pentru recalcularea greutatilor dupa split(rebalance_weight);
+
+In afara de functia split, restul nu prezentau dificultati prea mari, asa ca
+vom explica pe scurt functia split.
+In primul rand, am tratat cazurile "de margine", cand indexul este 0 sau cel
+putin dimensiunea string-ului continut de arbore.
+Dupa care, verificam daca split-ul trece prin mijlocul unei frunze, in cazul
+in care impartim frunza in 2 frunze si dupa continuam cu split-ul propriu-zis.
+Acesta presupune parcurgerea arborelui din radacina, urmand urmatoarele
+reguli:
+-Daca idx este mai mic decat greutatea nodului curent, atunci pastram ce e in
+dreapta si concatenam cu ce aveam anterior si mergem pe stanga;
+-Altfel, scadem din index greutatea nodului curent si mergem pe dreapta;
+-La final reactualizam greutatile din arborele stanga;
+
+Observatii:
+-La testele 6 si 7 nu exista niciun free, trebuind sa le adaugam noi cand
+testam cu valgrind;
